@@ -31,10 +31,10 @@ const PokedexList = () => {
   });
 
   useEffect(() => {
-    if (isFirstLoading && !listData.isPending && !listDetailed.isPending) {
+    if (isFirstLoading && !listData.isPending && !listDetailed.isLoading) {
       setIsFirstLoading(false);
     }
-  }, [listData.isPending, listDetailed.isPending]);
+  }, [listData.isPending, listDetailed.isLoading]);
 
   return (
     <div className="w-full h-dvh bg-white flex flex-col overflow-hidden">
@@ -93,7 +93,7 @@ const PokedexList = () => {
                 <Button
                   text="Carregar mais pokémons"
                   onClick={() => listDetailed.fetchNextPage()}
-                  loading={listDetailed.isFetchingNextPage}
+                  loading={listDetailed.isFetchingNextPage || listDetailed.isLoading}
                 />
               )}
 
