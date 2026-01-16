@@ -12,6 +12,7 @@ export default defineConfig({
     tsconfigPaths(),
     VitePWA({
       registerType: 'autoUpdate',
+      includeAssets: ['apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
         name: 'Pokédex',
         short_name: 'Pokedex',
@@ -19,6 +20,24 @@ export default defineConfig({
         theme_color: '#173EA5',
         background_color: '#ffffff',
         display: 'standalone',
+        icons: [
+          {
+            src: '/assets/pikachu-192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: '/assets/pikachu-512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          },
+          {
+            src: '/assets/pikachu-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable'
+          }
+        ],
       }
     }),
   ],
