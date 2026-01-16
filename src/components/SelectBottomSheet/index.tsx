@@ -64,7 +64,7 @@ const SelectBottomSheet = ({
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
 
         <Drawer.Content
-          className="bg-white rounded-t-2xl fixed bottom-0 left-0 right-0 outline-none flex flex-col max-h-[90dvh]"
+          className="bg-white rounded-t-2xl fixed bottom-0 left-0 right-0 outline-none flex flex-col max-h-[90dvh] z-50"
           aria-describedby=''
         >
           <div className='p-4 flex flex-col gap-4'>
