@@ -83,6 +83,7 @@ export const usePokemonList = ({
 
       return {
         data: filtered,
+        isPending: results.some((res) => res.isPending),
         isLoading: results.some((res) => res.isLoading),
         isFetchingNextPage: listDataQuery.isFetchingNextPage,
         hasNextPage: listDataQuery.hasNextPage,

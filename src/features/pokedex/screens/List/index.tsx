@@ -28,7 +28,7 @@ const PokedexList = () => {
     orderBy: orderOption.value,
   });
 
-  const isLoading = listData.isPending || !listDetailed.data.length;
+  const isLoading = listData.isPending || listDetailed.isPending;
 
   return (
     <div className="w-full h-dvh bg-white flex flex-col overflow-hidden">
