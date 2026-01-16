@@ -59,9 +59,13 @@ const PokemonListCard = ({ pokemon }: PokemonListCardProps) => {
         mainPokemonTypeData.className
       )}>
         <img
+          src={mainPokemonTypeData.outline}
+          className="h-[90%] top-1/2 -translate-y-1/2 object-contain opacity-75 absolute mask-[linear-gradient(to_bottom,black_0%,transparent_100%)]"
+        />
+
+        <img
           src={pokemon.sprites.front_default || undefined}
-          alt={pokemon.name}
-          style={{ width: '100px' }}
+          className="w-25 z-10 relative object-contain"
         />
 
         <button

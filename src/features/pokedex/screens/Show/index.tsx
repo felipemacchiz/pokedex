@@ -88,6 +88,13 @@ const PokedexShow = () => {
 
         <div className="flex items-center justify-center">
           <img
+            src={mainPokemonTypeData?.outline}
+            className="h-[80%] top-1/2 -translate-y-1/2 object-contain opacity-75 absolute mask-[linear-gradient(to_bottom,black_0%,transparent_100%)]"
+          />
+        </div>
+
+        <div className="flex items-center justify-center">
+          <img
             src={pokemon?.base?.sprites.other.showdown.front_default || undefined}
             alt={pokemon?.base?.name}
             className="size-40 object-contain z-10 mt-10"

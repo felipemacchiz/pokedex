@@ -54,10 +54,15 @@ const EvolutionItem = ({ chain }: EvolutionItemProps) => {
         }}
         disabled={name == chain.species.name}
       >
-        <div className={twMerge('w-28 min-h-18.5 rounded-full flex items-center justify-center', mainPokemonTypeData?.className)}>
+        <div className={twMerge('w-28 min-h-18.5 rounded-full flex items-center justify-center relative', mainPokemonTypeData?.className)}>
+          <img
+            src={mainPokemonTypeData?.outline}
+            className="h-[90%] top-1/2 -translate-y-1/2 object-contain opacity-75 absolute mask-[linear-gradient(to_bottom,black_0%,transparent_100%)]"
+          />
+
           <img
             src={pokemon.base?.sprites.front_default || undefined}
-            className="object-contain"
+            className="object-contain relative"
           />
         </div>
 
