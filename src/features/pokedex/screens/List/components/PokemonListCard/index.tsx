@@ -69,7 +69,7 @@ const PokemonListCard = ({ pokemon }: PokemonListCardProps) => {
         />
 
         <button
-          className="absolute top-1.5 right-1.5 size-7 rounded-full border-2 border-white backdrop-blur-2xl bg-black/30 flex items-center justify-center cursor-pointer"
+          className="absolute z-20 top-1.5 right-1.5 size-7 rounded-full border-2 border-white backdrop-blur-2xl bg-black/30 flex items-center justify-center cursor-pointer"
           onClick={(event) => {
             event.stopPropagation();
 
