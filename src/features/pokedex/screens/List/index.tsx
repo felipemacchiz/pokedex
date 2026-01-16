@@ -1,6 +1,6 @@
 import TextInput from "@/components/TextInput";
 import SelectBottomSheet, { type SelectOption } from "@/components/SelectBottomSheet";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PokemonListCard from "./components/PokemonListCard";
 import { usePokemonList } from "../../hooks/usePokemonList";
 import { pokemonTypesSelectOptions } from "@/constants/pokemonTypes.constant";
@@ -13,6 +13,8 @@ import Button from "@/components/Button";
 const PokedexList = () => {
   const [pokemonTypeOption, setPokemonTypeOption] = useState<SelectOption>(pokemonTypesSelectOptions[0]);
   const [orderOption, setOrderOption] = useState<SelectOption>(pokemonListOrderByOptions[0]);
+
+  const [isFirstLoading, setIsFirstLoading] = useState(true);
 
   const [search, setSearch] = useState('');
   const [debouncedSearch, { isPending: debouncedSearchIsPending }] = useDebounce(search, 1000);
@@ -28,7 +30,11 @@ const PokedexList = () => {
     orderBy: orderOption.value,
   });
 
-  const isLoading = listData.isPending || listDetailed.isPending;
+  useEffect(() => {
+    if (isFirstLoading && !listData.isPending && !listDetailed.isPending) {
+      setIsFirstLoading(false);
+    }
+  }, [listData.isPending, listDetailed.isPending]);
 
   return (
     <div className="w-full h-dvh bg-white flex flex-col overflow-hidden">
@@ -61,7 +67,7 @@ const PokedexList = () => {
           />
         </div>
 
-        {!isLoading && Number(listDetailed.data?.length) > 0 && (
+        {!isFirstLoading && Number(listDetailed.data?.length) > 0 && (
           <div className="flex flex-col gap-3">
             {listDetailed.data.map((pokemon) => (
               <PokemonListCard
@@ -80,7 +86,7 @@ const PokedexList = () => {
           </div>
         )}
 
-        {!isLoading && Number(listDetailed.data?.length) === 0 && (
+        {!isFirstLoading && Number(listDetailed.data?.length) === 0 && (
           <NotFound>
             <div className="flex flex-col gap-2">
               {listDetailed.hasNextPage && (
@@ -102,7 +108,7 @@ const PokedexList = () => {
           </NotFound>
         )}
 
-        {isLoading && (
+        {isFirstLoading && (
           <Loading className="h-full" />
         )}
       </div>
