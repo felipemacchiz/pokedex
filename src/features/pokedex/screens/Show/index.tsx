@@ -143,9 +143,10 @@ const PokedexShow = () => {
           />
 
           <DisplayField
-            label="Categoria"
-            LabelIcon={<img src="/assets/Weight.svg" className="size-4" />}
-            value={pokemon?.base?.weight.toString() || '--'}
+            label="Habitat"
+            LabelIcon={<img src="/assets/Category.svg" className="size-4" />}
+            value={pokemon?.species?.base.habitat.name || '--'}
+            valueClassName="capitalize"
           />
 
           <DisplayField
@@ -213,7 +214,7 @@ const PokedexShow = () => {
               Evoluções
             </h3>
 
-            <div className="border border-pk-gray-100 rounded-2xl flex-col gap-2 px-4 py-6">
+            <div className="border border-pk-gray-100 rounded-2xl flex flex-col gap-2 px-4 py-6">
               <EvolutionItem chain={pokemon.species?.evolution?.chain} />
             </div>
           </div>

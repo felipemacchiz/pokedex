@@ -35,7 +35,7 @@ const EvolutionItem = ({ chain }: EvolutionItemProps) => {
   return (
     <>
       {!!chain.evolution_details?.[0]?.min_level && (
-        <div className="flex items-center justify-center py-2">
+        <div className="flex items-center justify-center">
           <img src="/assets/ArrowDownThick.svg" />
 
           <p className="text-[#173EA5] text-base font-medium">
